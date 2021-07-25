@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "report1": "npx newman run https://www.getpostman.com/collections/da603fa51ed703952940 -d dataset/satellitePositionDataSet.json --suppress-exit-code 1 -r --reporter-htmlextra-export newman/reportISSSatellitePosAPI.html htmlextra",
-    "report2": "npx newman run https://www.getpostman.com/collections/d9651a01d60ddbfd16a1 -d dataset/satelliteTLEDataSet.json  --suppress-exit-code 1 -r --reporter-htmlextra-export newman/reportISSSatelliteTLEAPI.html htmlextra"
+    "report2": "npx newman run https://www.getpostman.com/collections/e569240d852361b9b16a -d dataset/satelliteTLEDataSet.json  --suppress-exit-code 1 -r --reporter-htmlextra-export newman/reportISSSatelliteTLEAPI.html htmlextra"
   },
   "keywords": [],
   "author": "",
