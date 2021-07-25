@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "report1": "npx newman run https://www.getpostman.com/collections/f6ec90ec43eb477ab7d6 -d dataset/satellitePositionDataSet.json -r --reporter-htmlextra-export newman/reportISSSatellitePosAPI.html --suppress-exit-code 1 htmlextra",
-    "report2": "npx newman run https://www.getpostman.com/collections/d9651a01d60ddbfd16a1 -d dataset/satelliteTLEDataSet.json -r --reporter-htmlextra-export newman/reportISSSatelliteTLEAPI.html --suppress-exit-code 1 htmlextra"
+    "report1": "npx newman run https://www.getpostman.com/collections/f6ec90ec43eb477ab7d6 -d dataset/satellitePositionDataSet.json --suppress-exit-code 1 -r --reporter-htmlextra-export newman/reportISSSatellitePosAPI.html htmlextra",
+    "report2": "npx newman run https://www.getpostman.com/collections/d9651a01d60ddbfd16a1 -d dataset/satelliteTLEDataSet.json  --suppress-exit-code 1 -r --reporter-htmlextra-export newman/reportISSSatelliteTLEAPI.html htmlextra"
   },
   "keywords": [],
   "author": "",
