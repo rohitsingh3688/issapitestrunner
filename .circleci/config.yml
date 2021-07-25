@@ -13,10 +13,11 @@ jobs:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Generate Report1
-          command: npm run report1
-      - run:
           name: Generate Report2
           command: npm run report2
+      - run:
+          name: Generate Report1
+          command: npm run report1
+      
       - store_artifacts:
           path: ~/repo/newman
