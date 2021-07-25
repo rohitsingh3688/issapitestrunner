@@ -1,12 +1,16 @@
 [
-{"satelliteId":25544, "format":"json"},
-{"satelliteId":25544, "format":"text"},
-{"satelliteId":25544, "format":null},
-{"satelliteId":"25544", "format":"text"},
-{"satelliteId":25544, "format":"", "status":400},
-{"satelliteId":25544, "format":"csv", "status":400},
-{"satelliteId":25543, "status":404},
-{"satelliteId":25545, "status":404},
-{"satelliteId":"xyz", "status":400},
-{"satelliteId":-25544, "status":400}
+{"Scenario":"Valid SatelliteId with valid format", "satelliteId":25544, "format":"json"},
+{"Scenario":"Valid SatelliteId with valid format", "satelliteId":25544, "format":"text"},
+{"Scenario":"Valid SatelliteId with No format", "satelliteId":25544, "format":null},
+{"Scenario":"Valid SatelliteId as numeric string with valid format", "satelliteId":"25544", "format":"json"},
+{"Scenario":"Valid SatelliteId with empty format", "satelliteId":25544, "format":"", "status":400},
+{"Scenario":"Valid SatelliteId with Invalid format", "satelliteId":25544, "format":"csv", "status":400},
+{"Scenario":"InValid SatelliteId without format for boundary value", "satelliteId":25543, "status":404},
+{"Scenario":"InValid SatelliteId without format for boundary value", "satelliteId":25545, "status":404},
+{"Scenario":"InValid SatelliteId with format", "satelliteId":25543,"format":"text", "status":404},
+{"Scenario":"InValid SatelliteId with invalid format", "satelliteId":25543,"format":"text", "status":404},
+{"Scenario":"InValid SatelliteId format", "satelliteId":"xyz", "status":400},
+{"Scenario":"InValid SatelliteId format with valid format param", "satelliteId":"xyz", "status":400,"format":"text"},
+{"Scenario":"InValid SatelliteId format with invalid format param", "satelliteId":"xyz", "status":400,"format":"ytf"},
+{"Scenario":"Invalid SatelliteId format", "satelliteId":-25544, "status":400}
 ]
