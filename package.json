@@ -1,0 +1,16 @@
+{
+  "name": "iss-satellite-api-reports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "report": "npx newman run https://www.getpostman.com/collections/f36ef6e01426393b5d24 -d dataset/satellitePositionDataSet.json -r htmlextra"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^5.2.4",
+    "newman-reporter-htmlextra": "^1.21.0"
+  }
+}
