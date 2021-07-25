@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "report": "npm run report1 & npm run report2",
     "report1": "npx newman run https://www.getpostman.com/collections/f6ec90ec43eb477ab7d6 -d dataset/satellitePositionDataSet.json -r htmlextra",
-	"report2": "npx newman run https://www.getpostman.com/collections/1b36f3eec1ed933b5c19 -d dataset/satelliteTLEDataSet.json -r htmlextra"
+    "report2": "npx newman run https://www.getpostman.com/collections/1b36f3eec1ed933b5c19 -d dataset/satelliteTLEDataSet.json -r htmlextra"
   },
   "keywords": [],
   "author": "",
