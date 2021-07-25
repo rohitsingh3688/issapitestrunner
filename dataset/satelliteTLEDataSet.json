@@ -1,5 +1,6 @@
 [
 {"format":"json"},
 {"format":""},
-{"format":"text"}
+{"format":"text"},
+{"format":"csv", "status":400}
 ]
