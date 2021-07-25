@@ -1,6 +1,12 @@
 [
-{"format":"json"},
-{"format":""},
-{"format":"text"},
-{"format":"csv", "status":400}
+{"satelliteId":25544, "format":"json"},
+{"satelliteId":25544, "format":"text"},
+{"satelliteId":25544, "format":null},
+{"satelliteId":"25544", "format":"text"},
+{"satelliteId":25544, "format":"", "status":400},
+{"satelliteId":25544, "format":"csv", "status":400},
+{"satelliteId":25543, "status":404},
+{"satelliteId":25545, "status":404},
+{"satelliteId":"xyz", "status":400},
+{"satelliteId":-25544, "status":400}
 ]
