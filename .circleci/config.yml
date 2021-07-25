@@ -13,11 +13,10 @@ jobs:
           name: Install Dependencies
           command: npm install
       - run:
-          name: Generate Report2
+          name: Generate ISS Satellite TLE API Report
           command: npm run report2
       - run:
-          name: Generate Report1
-          command: npm run report1
-      
+          name: Generate ISS Satellite Position API Report
+          command: npm run report1     
       - store_artifacts:
           path: ~/repo/newman
