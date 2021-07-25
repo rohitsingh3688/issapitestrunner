@@ -14,9 +14,9 @@ jobs:
           command: npm install
       - run:
           name: Generate ISS Satellite TLE API Report
-          command: npm run report2 && process.exit(0)
+          command: npm run report2
       - run:
           name: Generate ISS Satellite Position API Report
-          command: npm run report1 && process.exit(0)    
+          command: npm run report1  
       - store_artifacts:
           path: ~/repo/newman
