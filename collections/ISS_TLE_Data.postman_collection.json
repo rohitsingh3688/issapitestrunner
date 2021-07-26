@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "a61cb67d-0235-4cf5-8d36-9f10c9a08633",
+		"name": "ISS TLE Data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get ISS Satellite TLE data",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"satelliteId\", pm.iterationData.get(\"satelliteId\"));\r",
+							"const format = pm.iterationData.get(\"format\");\r",
+							"let queryParam = \"\";\r",
+							"if(format!=null)\r",
+							"    queryParam = queryParam + \"?format=\" + format;\r",
+							"pm.collectionVariables.set(\"queryParam\", queryParam);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"required\": [\r",
+							"        \"requested_timestamp\",\r",
+							"        \"tle_timestamp\",\r",
+							"        \"id\",\r",
+							"        \"name\",\r",
+							"        \"header\",\r",
+							"        \"line1\",\r",
+							"        \"line2\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"requested_timestamp\": {\r",
+							"            \"$id\": \"#/properties/requested_timestamp\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The requested_timestamp schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"tle_timestamp\": {\r",
+							"            \"$id\": \"#/properties/tle_timestamp\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The tle_timestamp schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"id\": {\r",
+							"            \"$id\": \"#/properties/id\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The id schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"            \"$id\": \"#/properties/name\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The name schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"header\": {\r",
+							"            \"$id\": \"#/properties/header\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The header schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"line1\": {\r",
+							"            \"$id\": \"#/properties/line1\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The line1 schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        },\r",
+							"        \"line2\": {\r",
+							"            \"$id\": \"#/properties/line2\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The line2 schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"\r",
+							"const code = pm.iterationData.get(\"status\") || 200;\r",
+							"const format = pm.iterationData.get(\"format\") || \"json\";\r",
+							"const contentType = format == \"json\" ? \"application/json\" : \"text/plain\";\r",
+							"\r",
+							"if(code == 200) {\r",
+							"    if(format == \"json\"){\r",
+							"        pm.test(\"Validating Schema\", () => {\r",
+							"            pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true\r",
+							"        })\r",
+							"    }\r",
+							"    else{\r",
+							"        pm.test(\"Validating Schema\", ()=>{\r",
+							"            const textRsp = pm.response.text();\r",
+							"            let result = true;\r",
+							"            if(textRsp==null || textRsp=='' || textRsp.length==0)\r",
+							"                result = false;\r",
+							"            else if(textRsp.indexOf('\\n')<0)\r",
+							"                result = false;\r",
+							"            else{\r",
+							"                const arrRsp = textRsp.split('\\n');\r",
+							"                if(arrRsp==null || arrRsp.length!=3){\r",
+							"                    result = false;\r",
+							"                }\r",
+							"                else{\r",
+							"                    result = result && (typeof arrRsp[0] === 'string' || arrRsp[0] instanceof String);\r",
+							"                    result = result && arrRsp[1] && arrRsp[1].length>0 && arrRsp[1].indexOf('1')==0;\r",
+							"                    result = result && arrRsp[2] && arrRsp[2].length>0 && arrRsp[2].indexOf('2')==0;\r",
+							"                }\r",
+							"            }\r",
+							"            pm.expect(result).to.be.true;\r",
+							"        })\r",
+							"    }\r",
+							"\r",
+							"    pm.test(\"Content-Type is valid\", function () {\r",
+							"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(contentType);\r",
+							"    })\r",
+							"}\r",
+							"else{\r",
+							"    pm.test(\"Content-Type is valid\", function () {\r",
+							"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Validating Status Code\", ()=>{\r",
+							"   pm.expect(pm.response.code).to.eql(code);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.wheretheiss.at/v1/satellites/{{satelliteId}}/tles{{queryParam}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"wheretheiss",
+						"at"
+					],
+					"path": [
+						"v1",
+						"satellites",
+						"{{satelliteId}}",
+						"tles{{queryParam}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "timestamp",
+			"value": "1436029892,1436029902"
+		},
+		{
+			"key": "timestamp",
+			"value": ""
+		},
+		{
+			"key": "format",
+			"value": ""
+		},
+		{
+			"key": "timestamps",
+			"value": ""
+		},
+		{
+			"key": "units",
+			"value": ""
+		},
+		{
+			"key": "satelliteId",
+			"value": ""
+		},
+		{
+			"key": "queryParam",
+			"value": ""
+		}
+	]
+}
