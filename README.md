@@ -5,9 +5,9 @@
 # Steps:
 1. Install git and setup in local using link -> https://github.com/git-guides/install-git
 2. Install node and npm and setup in local using link -> https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-3. Create a folder gitrepo and clone the repo https://github.com/rohitsingh3688/issapitestrunner.git using below command:
+3. Create a folder gitrepo, navigate inside the folder and clone the repo https://github.com/rohitsingh3688/issapitestrunner.git using command :
     git clone https://github.com/rohitsingh3688/issapitestrunner.git
-4. Open windows command prompt, go to the above folder location gitrepo/issapitestrunner and run below command
+4. Open windows command prompt, go to the above folder location gitrepo/issapitestrunner and run command
     npm install
 5. To run the postman test and generate report locally, run below command
     npm run report1 && npm run report2
