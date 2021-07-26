@@ -16,7 +16,8 @@
    satellite/[id]/tles
 7. To check the report from clound cli, please login to below url and click on build link below the first pipeline row, then click on Artifacts tab and click on the html          reports
    https://app.circleci.com/pipelines/github/rohitsingh3688/issapitestrunner
-   
+8. Additionaly if you have the postman locally and want to run the collection then import the collection from folder issapitestrunner/collections and select data file from      folder issapitestrunner/dataset.
+
 # Issues with API observed so far
 
 # API -> satellite/[id]/tles
